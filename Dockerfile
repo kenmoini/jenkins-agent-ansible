@@ -2,6 +2,8 @@ FROM jenkins/jnlp-slave:alpine as jnlp
 
 FROM node:alpine
 
+WORKDIR /tmp
+
 RUN apk -U add openjdk8-jre wget tar gzip git python ansible
 
 COPY --from=jnlp /usr/local/bin/jenkins-slave /usr/local/bin/jenkins-agent
